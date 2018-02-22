@@ -54,4 +54,4 @@ http://tech.pjin.jp/blog/2015/12/07/no-ui-is-a-new-user-interface-design/
 https://operator.com/
 - 音声操作
 - 同時通訳
-- オーディオブログ
+- オーディオブック

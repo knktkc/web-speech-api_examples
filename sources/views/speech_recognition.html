@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>speech recognition test</title>
+  <style>
+    li{
+      list-style: none;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>speech recognition test</h1>
+  <ul id="result"></ul>
+  <button class="start-btn">start !</button>
+
+  <script type="text/javascript">
+    (function($){
+      // initialize
+      var recognition,isRecognition = false;
+      const LANG_JAPANESE = "ja-JP";
+      $(".start-btn").on("click", start);
+
+      // recognition start
+      function start(){
+        recognition = new webkitSpeechRecognition();
+        recognition.lang = LANG_JAPANESE;
+        recognition.start();
+        isRecognition = !isRecognition;
+        // recognition end
+        recognition.onend = function() {
+          stop();
+        }
+        // recognition result process
+        recognition.onresult = function(e) {
+          if(e.results.length > 0){
+            var value = e.results[0][0].transcript;
+            $("#result").append("<li>"+value+"</li>");
+          }
+        }
+        alert("please speach")
+      }
+
+      // recognition stop
+      function stop(){
+        if(isRecognition){
+          recognition.stop();
+          isRecognition = !isRecognition;
+        }
+      }
+    })(jQuery);
+  </script>
+</body>
+</html>
